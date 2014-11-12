@@ -8,9 +8,10 @@ import java.util.Vector;
 
 import javax.imageio.ImageIO;
 
+import base.MyActionListener;
 import base.MyComponent;
 
-public class Cena extends MyComponent{
+public class Cena extends MyComponent implements MyActionListener{
 		private Vector<Pista> pistas;
 		private Vector<Suspeito> suspeitos;
 		private ArmaDoCrime armaUtilizada;
@@ -83,6 +84,16 @@ public class Cena extends MyComponent{
 		@Override
 		public void paint(Graphics g) {
 			g.drawImage(fotoCrime,this.x,this.y,null);
+			for (Pista pista : pistas) {
+				pista.paint(g);
+			}
+			
+		}
+
+
+		@Override
+		public void actionPerformed(MyComponent c) {
+			// TODO Auto-generated method stub
 			
 		}
 }

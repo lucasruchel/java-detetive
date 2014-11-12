@@ -14,7 +14,8 @@ public class MyApplication
 	
 	private MyLabel ml;
 	private Cena c1;
-	
+	private Pista p1;
+	private SuspeitoAdapter s1;
 	
 	//metodo de trabalho (helper)
 	private void createGUI()
@@ -26,10 +27,16 @@ public class MyApplication
 		mp.setSize(1024, 768);
 		mp.setPreferredSize(new Dimension(1024,768));
 		
-		c1 = new Cena("Images/cina1.png");
+		c1 = new Cena("Images/cena1.jpg");
+
 		this.mp.add(c1);
 		
-		
+		this.p1 = new Pista(200,200,50,50,"Olá Ruchel Viado!");
+		p1.setVisible(true);
+		c1.addPistas(p1);
+		this.s1 = new SuspeitoAdapter(200,10,50,100,new Suspeito());
+		this.s1.setVisible(true);
+		mp.add(s1);
 		jf.pack();//redimensiona para conter os componentes
 		jf.setVisible(true);
 		

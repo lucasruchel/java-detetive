@@ -9,6 +9,11 @@ public class Pista extends MyComponent
 {
 	private Dica dica;
 	
+	public Pista(int x, int y, int w, int h, String informacao){
+		super(x,y,w,h);
+		this.addDicas(informacao);
+	}
+	
 	public void addDicas(String informacoes){
 		if(this.dica == null)
 			this.dica = new Dica(this.x+50, this.y, this.width, this.height); 
@@ -25,7 +30,7 @@ public class Pista extends MyComponent
 	}
 	@Override
 	public void paint(Graphics g) {
-		if (this.dica.isSelected())
+		//if (this.dica.isSelected())
 			this.dica.paint(g);
 	}
 
