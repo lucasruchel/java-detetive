@@ -23,7 +23,7 @@ public class MyPanel extends JPanel
 	
 	public void add(MyComponent mc)
 	{
-		//inicializa��o sob demanda
+		//inicializacao sob demanda
 		if(this.vMyComponent == null)
 			this.vMyComponent = new Vector<MyComponent>();
 		
@@ -33,7 +33,7 @@ public class MyPanel extends JPanel
 	}
 	
 	//reescrever o metodo pain
-	@Override //anota��o
+	@Override
 	public void paint(Graphics g)
 	{
 		super.paint(g);
