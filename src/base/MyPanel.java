@@ -32,7 +32,7 @@ public class MyPanel extends JPanel
 		this.addMouseMotionListener(mc);
 	}
 	
-	//reescrever o metodo pain
+	//reescrever o metodo paint
 	@Override
 	public void paint(Graphics g)
 	{

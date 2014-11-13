@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -19,11 +20,11 @@ public class Cena extends MyComponent implements MyActionListener{
 		private String descricao;
 		private BufferedImage fotoCrime;
 		
-		
+		private SuspeitoAdapter[] s1;
 		
 		//Construtor
 		public Cena(String imagem) {
-			super(200,100,0,0);
+			super(200,150,0,0);
 			
 			iniciaMatrix(imagem);
 			this.setVisible(true);
@@ -52,7 +53,6 @@ public class Cena extends MyComponent implements MyActionListener{
 		public void setFotoCrime(String caminho){
 			try 
 			{
-			    
 			    fotoCrime = ImageIO.read(new File(caminho));
 			} 
 			catch (IOException e) 
@@ -89,11 +89,17 @@ public class Cena extends MyComponent implements MyActionListener{
 			}
 			
 		}
-
-
+		@Override
+		public void mouseMoved(MouseEvent me) {
+		// TODO Auto-generated method stub
+			super.mouseMoved(me);
+			
+			for (Pista pista : pistas) {
+				pista.mouseMoved(me);
+			}
+		}
 		@Override
 		public void actionPerformed(MyComponent c) {
 			// TODO Auto-generated method stub
-			
 		}
 }
