@@ -12,8 +12,8 @@ public class ContemDicas extends MyComponent implements MyActionListener{
 	private Color backgroundColor;
 	
 	
-	public ContemDicas() {
-		super(0,0,200,500);
+	public ContemDicas(int w,int h) {
+		super(0,0,w,h);
 		this.backgroundColor = Color.DARK_GRAY;
 		
 	}
@@ -25,9 +25,7 @@ public class ContemDicas extends MyComponent implements MyActionListener{
 	}
 	@Override
 	public void paint(Graphics g) {
-		
-		
-		
+		g.fillRect(0, 0, this.width, this.height);
 	}
 
 	@Override

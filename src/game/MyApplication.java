@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import base.Caso;
+import base.ContemDicas;
 import base.MyLabel;
 import base.MyPanel;
 
@@ -16,9 +17,11 @@ public class MyApplication
 	private MyLabel ml;
 	private Cena c1;
 	private Pista p1;
-	private SuspeitoAdapter s1;
+	private SuspeitoAdapter s1,s2,s3,s4,s5;
 	private Suspeito susp;
 	private Caso caso;
+	private ContemDicas dicasDisplay;
+	
 	//metodo de trabalho (helper)
 	private void createGUI()
 	{
@@ -29,19 +32,40 @@ public class MyApplication
 		mp.setSize(1024, 768);
 		mp.setPreferredSize(new Dimension(1024,768));
 		
-		c1 = new Cena("Images/cena1.jpg");
-
+		//Instancia variaveis
+		this.c1 = new Cena("Images/cena1.jpg");
+		this.p1 = new Pista(200,200,100,100,"Teste!");
+		this.dicasDisplay = new ContemDicas(150,768);
+		
+		
+		this.susp = new Suspeito("Ruchel", "faxineiro", "Estava pescando", null);
+		
+		this.s1 = new SuspeitoAdapter(200,10,100,100,susp );
+		this.s2 = new SuspeitoAdapter(200,10,100,100,susp );
+		this.s3 = new SuspeitoAdapter(200,10,100,100,susp );
+		this.s4 = new SuspeitoAdapter(200,10,100,100,susp );
+		this.s5 = new SuspeitoAdapter(200,10,100,100,susp );
+		
+		//Adiciona ao caso
+		this.caso = new Caso(0,0,1024,768,c1,dicasDisplay);
+		this.caso.addSuspeitos(s1);
+		this.caso.addSuspeitos(s2);
+		this.caso.addSuspeitos(s3);
+		this.caso.addSuspeitos(s4);
+		this.caso.addSuspeitos(s5);
+		
+		//Adiciona elementos
 		this.mp.add(c1);
 		
-		this.p1 = new Pista(200,200,100,100,"Teste!");
-		
-		p1.setVisible(true);
 		c1.addPistas(p1);
-		susp = new Suspeito("Ruchel", "faxineiro", "Estava cagando", null);
-		this.s1 = new SuspeitoAdapter(200,10,100,100,susp );
-		this.s1.setVisible(true);
-		mp.add(s1);
 		mp.add(caso);
+		
+		
+		//Seta Atributos
+		p1.setVisible(true);
+		this.s1.setVisible(true);
+		
+		
 		jf.pack();//redimensiona para conter os componentes
 		jf.setVisible(true);
 		
