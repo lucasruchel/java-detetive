@@ -3,8 +3,6 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import base.Caso;
-import base.ContemDicas;
 import base.MyLabel;
 import base.MyPanel;
 
@@ -16,7 +14,7 @@ public class MyApplication
 	
 	private MyLabel ml;
 	private Cena c1;
-	private Pista p1;
+	private Pista p1,p2;
 	private SuspeitoAdapter s1,s2,s3,s4,s5;
 	private Suspeito susp;
 	private Caso caso;
@@ -33,9 +31,10 @@ public class MyApplication
 		mp.setPreferredSize(new Dimension(1024,768));
 		
 		//Instancia variaveis
-		this.c1 = new Cena("Images/cena1.jpg");
-		this.p1 = new Pista(200,200,100,100,"Teste!");
 		this.dicasDisplay = new ContemDicas(150,768);
+		this.c1 = new Cena("Images/cena1.jpg",dicasDisplay);
+		this.p1 = new Pista(200,200,100,100,"Teste!    sssssss");
+		this.p2 = new Pista(200,400,100,100,"#TheZueiraNeverEnd");
 		
 		
 		this.susp = new Suspeito("Ruchel", "faxineiro", "Estava pescando", null);
@@ -58,6 +57,7 @@ public class MyApplication
 		this.mp.add(c1);
 		
 		c1.addPistas(p1);
+		c1.addPistas(p2);
 		mp.add(caso);
 		
 		

@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import base.MyActionListener;
 import base.MyComponent;
 
-public class Cena extends MyComponent implements MyActionListener{
+public class Cena extends MyComponent{
 		private Vector<Pista> pistas;
 		private Vector<Suspeito> suspeitos;
 		private ArmaDoCrime armaUtilizada;
@@ -21,25 +21,28 @@ public class Cena extends MyComponent implements MyActionListener{
 		private BufferedImage fotoCrime;
 		
 		private SuspeitoAdapter[] s1;
+		private ContemDicas listener;
 		
 		//Construtor
-		public Cena(String imagem) {
+		public Cena(String imagem,ContemDicas listener) {
 			super(200,150,0,0);
 			
 			iniciaMatrix(imagem);
 			this.setVisible(true);
+			this.listener = listener;
 			
 		}
-		
-		
 		//Metodos para Atributos
 		public void addPistas(Pista pista){
 			//Inicializa
 			if (this.pistas == null)
 				this.pistas = new Vector<Pista>();
 			
+			pista.addActionListener(listener);
+			
 			this.pistas.add(pista);
 		}
+		
 		public void addSuspeitos(Suspeito suspeito){
 			//Inicializa
 			if (this.suspeitos == null)
@@ -50,6 +53,7 @@ public class Cena extends MyComponent implements MyActionListener{
 		private void setArmaDoCrime(ArmaDoCrime arma){
 			this.armaUtilizada = arma;
 		}
+		
 		public void setFotoCrime(String caminho){
 			try 
 			{
@@ -96,10 +100,17 @@ public class Cena extends MyComponent implements MyActionListener{
 			
 			for (Pista pista : pistas) {
 				pista.mouseMoved(me);
+				
 			}
 		}
 		@Override
-		public void actionPerformed(MyComponent c) {
-			// TODO Auto-generated method stub
+		public void mouseClicked(MouseEvent me) {
+			super.mouseClicked(me);
+			
+			for (Pista pista : pistas) {
+				pista.mouseClicked(me);
+			}
 		}
+		
+		
 }

@@ -1,4 +1,4 @@
-package base;
+package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import javax.imageio.ImageIO;
 
+import base.MyComponent;
 import game.Cena;
 import game.SuspeitoAdapter;
 

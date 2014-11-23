@@ -6,7 +6,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
-public class MyLabel extends MyComponent //heran�a
+public class MyLabel extends MyComponent //heranca
 {
 	
 	private String txt;
@@ -51,6 +51,14 @@ public class MyLabel extends MyComponent //heran�a
 	public Color getBorderColor()
 	{
 		return borderColor;
+	}
+
+	public String getTxt() {
+		return txt;
+	}
+
+	public void setTxt(String txt) {
+		this.txt = txt;
 	}
 
 	public void setBorderColor(Color borderColor)

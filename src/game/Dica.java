@@ -17,6 +17,9 @@ public class Dica extends MyComponent
 	public void setDica(String dica){
 		this.label.setLabel(dica);
 	}
+	public String getTxt(){
+		return label.getTxt();
+	}
 	@Override
 	public void paint(Graphics g) {
 		label.paint(g);
