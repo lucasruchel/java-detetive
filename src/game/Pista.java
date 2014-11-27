@@ -78,8 +78,7 @@ public class Pista extends MyComponent
 			
 			g.setColor(old);
 			
-			if (this.dica.isSelected())
-				this.dica.paint(g);
+			
 	}
 
 }
