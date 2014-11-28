@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -47,6 +48,15 @@ public class Caso extends MyComponent{
 		}
 	}
 	@Override
+	public void mouseClicked(MouseEvent me) {
+		// TODO Auto-generated method stub
+		super.mouseClicked(me);
+		
+		for (SuspeitoAdapter suspeitoAdapter : suspeitos) {
+			suspeitoAdapter.mouseClicked(me);
+		}
+	}
+	@Override
 	public void paint(Graphics g) {
 		Color old;
 		
@@ -61,8 +71,11 @@ public class Caso extends MyComponent{
 		contemDicas.paint(g);
 		
 		for (SuspeitoAdapter suspeitoAdapter : suspeitos) {
-			g.drawImage(suspeitoBackground, positionMaxX, this.y+10, null);
 			
+			//g.drawImage(suspeitoBackground, positionMaxX, this.y+10, null);
+			suspeitoAdapter.setPosition(positionMaxX+5, this.y+30);
+			
+			suspeitoAdapter.paint(g);
 			positionMaxX += 120;
 		}
 		
