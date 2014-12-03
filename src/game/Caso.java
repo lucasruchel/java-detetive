@@ -19,6 +19,7 @@ public class Caso extends MyComponent{
 	private Vector<SuspeitoAdapter> suspeitos;
 	private Cena cena;
 	private ContemDicas contemDicas;
+	private SuspeitoAdapter selectedSuspeito;
 	
 	//Atributos Campo
 	private BufferedImage suspeitoBackground;
@@ -31,31 +32,31 @@ public class Caso extends MyComponent{
 		this.contemDicas = contemDicas;
 		this.cena.addActionListener(contemDicas);
 		
-		loadImageBackgoundSuspeito("Images/suspeitoBackground.png");
+	
 		
 	}
 	public void addSuspeitos(SuspeitoAdapter suspeito){
 		this.suspeitos.add(suspeito);
 	}
-	public void loadImageBackgoundSuspeito(String image){
-		try 
-		{
-		    suspeitoBackground = ImageIO.read(new File(image));
-		} 
-		catch (IOException e) 
-		{
-		    e.printStackTrace();
-		}
+	public SuspeitoAdapter getSelectedSuspeito() {
+		for (SuspeitoAdapter suspeito : suspeitos)
+			if (suspeito.isSelected())
+				return suspeito;
+		return null;
 	}
 	@Override
 	public void mouseClicked(MouseEvent me) {
 		// TODO Auto-generated method stub
 		super.mouseClicked(me);
-		
-		for (SuspeitoAdapter suspeitoAdapter : suspeitos) {
-			suspeitoAdapter.mouseClicked(me);
-		}
+		if (isOver(me.getX(), me.getY()))
+			for (SuspeitoAdapter suspeitoAdapter : suspeitos) {
+				if (suspeitoAdapter.isSelected())
+					selectedSuspeito = suspeitoAdapter;
+				
+				suspeitoAdapter.mouseClicked(me);
+			}
 	}
+	
 	@Override
 	public void paint(Graphics g) {
 		Color old;

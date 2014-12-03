@@ -11,6 +11,9 @@ public class SuspeitoAdapter extends MyComponent{
 	private Color selectedColor;
 	
 	
+	public Suspeito getSuspeito() {
+		return suspeito;
+	}
 	public SuspeitoAdapter(int x, int y, int w, int h, Suspeito suspeito) {
 		super(x,y,w,h);
 		this.suspeito = suspeito;
@@ -20,7 +23,6 @@ public class SuspeitoAdapter extends MyComponent{
 	public void mouseClicked(MouseEvent me) {
 		// TODO Auto-generated method stub
 		super.mouseClicked(me);
-		this.setSelected(false);
 		if (isOver(me.getX(), me.getY()))
 			setSelected(true);
 	}

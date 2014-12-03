@@ -19,11 +19,15 @@ public class MyApplication
 	private Suspeito susp1,susp2,susp3,susp4,susp5;
 	private Caso caso;
 	private ContemDicas dicasDisplay;
-	private MyButton bEnunciado, bGod;
+	private MyButton bEnunciado, bGod, bSubmete;
+	private SuspeitoListener submeteAction;
+	
 	
 	//metodo de trabalho (helper)
 	private void createGUI()
 	{
+		//interfaces
+		submeteAction = new SuspeitoListener();
 		
 		//Estáticos
 		this.jf = new JFrame("Meu Projeto");
@@ -33,10 +37,6 @@ public class MyApplication
 		mp.setSize(1024, 768);
 		mp.setPreferredSize(new Dimension(1024,768));
 		
-		
-		
-		
-		
 		//Instancia variaveis
 		this.dicasDisplay = new ContemDicas(150,768);
 		this.c1 = new Cena("Images/cena1.jpg",dicasDisplay);
@@ -44,18 +44,24 @@ public class MyApplication
 		this.p2 = new Pista(200,400,100,100,"#TheZueiraNeverEnd");
 		
 		
-		this.susp1 = new Suspeito("Ruchel", "faxineiro", "Estava pescando", "Images/char1.png");
-		this.susp2 = new Suspeito("Ruchel", "faxineiro", "Estava pescando", "Images/char2.png");
-		this.susp3 = new Suspeito("Ruchel", "faxineiro", "Estava pescando", "Images/char3.png");
-		this.susp4 = new Suspeito("Ruchel", "faxineiro", "Estava pescando", "Images/char4.png");
-		this.susp5 = new Suspeito("Ruchel", "faxineiro", "Estava pescando", "Images/char5.png");
-		
+		this.susp1 = new Suspeito("Ruchel1", "faxineiro1", "Estava pescando1", "Images/char1.png");
+		this.susp2 = new Suspeito("Ruchel2", "faxineiro2", "Estava pescando2", "Images/char2.png");
+		this.susp3 = new Suspeito("Ruchel3", "faxineiro3", "Estava pescando3", "Images/char3.png");
+		this.susp4 = new Suspeito("Ruchel4", "faxineiro4", "Estava pescando4", "Images/char4.png");
+		this.susp5 = new Suspeito("Ruchel5", "faxineiro5", "Estava pescando5", "Images/char5.png");
 		
 		this.s1 = new SuspeitoAdapter(200,10,100,100,susp1 );
+		
 		this.s2 = new SuspeitoAdapter(200,10,100,100,susp2 );
 		this.s3 = new SuspeitoAdapter(200,10,100,100,susp3 );
 		this.s4 = new SuspeitoAdapter(200,10,100,100,susp4 );
 		this.s5 = new SuspeitoAdapter(200,10,100,100,susp5 );
+		
+		this.s1.addActionListener(submeteAction);
+		this.s2.addActionListener(submeteAction);
+		this.s3.addActionListener(submeteAction);
+		this.s4.addActionListener(submeteAction);
+		this.s5.addActionListener(submeteAction);
 		
 		//Adiciona ao caso
 		this.caso = new Caso(0,0,1024,768,c1,dicasDisplay);
@@ -65,6 +71,8 @@ public class MyApplication
 		this.caso.addSuspeitos(s4);
 		this.caso.addSuspeitos(s5);
 		
+		this.caso.addActionListener(submeteAction);
+		
 		//Adiciona elementos
 		this.mp.add(c1);
 		
@@ -72,18 +80,23 @@ public class MyApplication
 		c1.addPistas(p2);
 		mp.add(caso);
 		
+		//botões de acoes
 		
+		this.bSubmete = new MyButton(200, 50, "Checa Resposta");
 		this.bEnunciado = new MyButton( 1000, 50,"Enunciado");
+		
+		this.bSubmete.setVisible(true);
 		this.bEnunciado.setVisible(true);
 		
+		this.bSubmete.addActionListener(submeteAction);
 		
+		this.mp.add(bSubmete);
 		this.mp.add(bEnunciado);
 		
 		
 		//Seta Atributos
 		p1.setVisible(true);
 		this.s1.setVisible(true);
-		
 		
 		jf.pack();//redimensiona para conter os componentes
 		jf.setVisible(true);
