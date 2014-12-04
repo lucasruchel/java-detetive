@@ -5,9 +5,13 @@ import base.MyComponent;
 
 public class SuspeitoListener implements MyActionListener{
 	
-	private Suspeito suspeito;
+	private Suspeito suspeito,culpado;
 	private SuspeitoAdapter lastClicked;
-
+	
+	public SuspeitoListener(Suspeito culpado) {
+		this.culpado = culpado;
+	}
+	
 	@Override
 	public void actionPerformed(MyComponent c) {
 		if (c instanceof Caso){
@@ -19,8 +23,11 @@ public class SuspeitoListener implements MyActionListener{
 		}
 		else
 			if (c instanceof MyButton){
-				if (suspeito != null)
-					System.out.println("O suspeito sugerido é: "+suspeito);
+				if (suspeito == culpado)
+					System.out.println("Well Done!!! Mas você ainda precisa treinar mais");
+				else{
+					System.out.println("Tente mais uma vez!!!!");
+				}
 			}
 		else if ( c instanceof SuspeitoAdapter){
 				if (lastClicked != null)

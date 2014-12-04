@@ -26,8 +26,7 @@ public class MyApplication
 	//metodo de trabalho (helper)
 	private void createGUI()
 	{
-		//interfaces
-		submeteAction = new SuspeitoListener();
+	
 		
 		//Estáticos
 		this.jf = new JFrame("Meu Projeto");
@@ -57,11 +56,15 @@ public class MyApplication
 		this.s4 = new SuspeitoAdapter(200,10,100,100,susp4 );
 		this.s5 = new SuspeitoAdapter(200,10,100,100,susp5 );
 		
+		//interfaces
+		submeteAction = new SuspeitoListener(susp1);
 		this.s1.addActionListener(submeteAction);
 		this.s2.addActionListener(submeteAction);
 		this.s3.addActionListener(submeteAction);
 		this.s4.addActionListener(submeteAction);
 		this.s5.addActionListener(submeteAction);
+	
+		
 		
 		//Adiciona ao caso
 		this.caso = new Caso(0,0,1024,768,c1,dicasDisplay);

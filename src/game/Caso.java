@@ -21,9 +21,6 @@ public class Caso extends MyComponent{
 	private ContemDicas contemDicas;
 	private SuspeitoAdapter selectedSuspeito;
 	
-	//Atributos Campo
-	private BufferedImage suspeitoBackground;
-	
 	public Caso(int x,int y, int w, int h, Cena cena, ContemDicas contemDicas){
 		super(x, y, w, h);
 		
@@ -31,9 +28,6 @@ public class Caso extends MyComponent{
 		this.cena = cena;
 		this.contemDicas = contemDicas;
 		this.cena.addActionListener(contemDicas);
-		
-	
-		
 	}
 	public void addSuspeitos(SuspeitoAdapter suspeito){
 		this.suspeitos.add(suspeito);
