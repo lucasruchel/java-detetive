@@ -146,7 +146,7 @@ public class MyLabel extends MyComponent //heranca
 		g.fillRect(x, y, width, height);
 		
 		g.setColor(this.txtColor);
-		g.drawString(txt, x+4, y+height/2+(int)rect.getHeight()/2);
+		g.drawString(txt, x+width/6, y+height/2+(int)rect.getHeight()/2);
 		
 		g.setColor(Color.BLACK);
 		if(flagBorda)

@@ -1,4 +1,5 @@
 package game;
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -19,8 +20,9 @@ public class MyApplication
 	private Suspeito susp1,susp2,susp3,susp4,susp5;
 	private Caso caso;
 	private ContemDicas dicasDisplay;
-	private MyButton bEnunciado, bGod, bSubmete;
+	private MyButton bSubmete;
 	private SuspeitoListener submeteAction;
+	private EndGame fim;
 	
 	
 	//metodo de trabalho (helper)
@@ -35,6 +37,7 @@ public class MyApplication
 		
 		mp.setSize(1024, 768);
 		mp.setPreferredSize(new Dimension(1024,768));
+		jf.setResizable(false);
 		
 		//Instancia variaveis
 		this.dicasDisplay = new ContemDicas(150,768);
@@ -86,15 +89,20 @@ public class MyApplication
 		//botões de acoes
 		
 		this.bSubmete = new MyButton(200, 50, "Checa Resposta");
-		this.bEnunciado = new MyButton( 1000, 50,"Enunciado");
+		
 		
 		this.bSubmete.setVisible(true);
-		this.bEnunciado.setVisible(true);
+		
 		
 		this.bSubmete.addActionListener(submeteAction);
 		
 		this.mp.add(bSubmete);
-		this.mp.add(bEnunciado);
+		
+		
+		this.fim = new EndGame(mp.getWidth(), mp.getHeight(), Color.gray);
+		this.fim.setVisible(true);
+		
+	//	this.mp.add(fim);
 		
 		
 		//Seta Atributos
