@@ -14,7 +14,7 @@ import base.MyComponent;
 
 public class Cena extends MyComponent{
 		private Vector<Pista> pistas;
-		private Vector<Suspeito> suspeitos;
+		
 		private ArmaDoCrime armaUtilizada;
 		
 		private String descricao;
@@ -42,14 +42,6 @@ public class Cena extends MyComponent{
 			
 			this.pistas.add(pista);
 		}
-		
-		public void addSuspeitos(Suspeito suspeito){
-			//Inicializa
-			if (this.suspeitos == null)
-				this.suspeitos =  new Vector<Suspeito>();
-			
-			this.suspeitos.add(suspeito);
-		}
 		private void setArmaDoCrime(ArmaDoCrime arma){
 			this.armaUtilizada = arma;
 		}
@@ -68,23 +60,14 @@ public class Cena extends MyComponent{
 			this.descricao = descricao;
 		}
 		//Métodos para load da Cena
-		
-		
-		
-		
 		public void iniciaMatrix(String imagem){
 			setFotoCrime(imagem);
 		}
-		
-		
 		//Método para resolucao de crime
 		public boolean resolveCrime(){
 			
 			return false;
 		}
-
-
-
 		@Override
 		public void paint(Graphics g) {
 			g.drawImage(fotoCrime,this.x,this.y,null);

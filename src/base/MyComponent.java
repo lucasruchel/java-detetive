@@ -126,7 +126,7 @@ public abstract class MyComponent
 	
 	protected void fireActionPerformed()
 	{
-		System.out.println("disparando evento actionPerformed");
+		
 		if(this.vActionListener == null)
 			return;
 		

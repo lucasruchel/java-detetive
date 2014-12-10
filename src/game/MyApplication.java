@@ -28,8 +28,6 @@ public class MyApplication
 	//metodo de trabalho (helper)
 	private void createGUI()
 	{
-	
-		
 		//Estáticos
 		this.jf = new JFrame("Meu Projeto");
 		this.mp = new MyPanel();
