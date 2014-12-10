@@ -100,7 +100,8 @@ public class MyApplication
 		
 		
 		this.fim = new EndGame(mp.getWidth(), mp.getHeight(), Color.gray);
-		this.fim.setVisible(true);
+		this.fim.setVisible(false);
+		this.mp.add(fim);
 		
 		
 		
@@ -129,7 +130,7 @@ public class MyApplication
 				this.mp.invalidate();
 				this.mp.repaint();
 				if(submeteAction.getCulpadoFlag()){
-					this.mp.add(fim);
+					this.fim.setVisible(true);
 				}				
 				Thread.sleep(33);
 			}

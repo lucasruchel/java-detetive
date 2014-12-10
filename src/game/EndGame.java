@@ -8,7 +8,7 @@ import base.MyLabel;
 
 public class EndGame extends MyComponent{
 	private MyButton gameRestart, gameExit;
-	private MyLabel gameMessage;
+	
 	private Color enabledColor;
 	
 	public EndGame(int width, int height,Color bckColor) {
@@ -23,11 +23,14 @@ public class EndGame extends MyComponent{
 	
 	@Override
 	public void paint(Graphics g) {
-		g.setColor(this.enabledColor);
-		g.fillRect(0, 0, this.width,this.height );
+		if (isVisible()){
+			g.setColor(this.enabledColor);
+			g.fillRect(0, 0, this.width,this.height );
+			
+			gameRestart.paint(g);
+			gameExit.paint(g);
+		}
 		
-		gameRestart.paint(g);
-		gameExit.paint(g);
 		
 	}
 	
