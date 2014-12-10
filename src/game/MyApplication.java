@@ -15,7 +15,7 @@ public class MyApplication
 	
 	private MyLabel ml;
 	private Cena c1;
-	private Pista p1,p2;
+	private Pista p1,p2,p3;
 	private SuspeitoAdapter s1,s2,s3,s4,s5;
 	private Suspeito susp1,susp2,susp3,susp4,susp5;
 	private Caso caso;
@@ -42,18 +42,17 @@ public class MyApplication
 		//Instancia variaveis
 		this.dicasDisplay = new ContemDicas(150,768);
 		this.c1 = new Cena("Images/cena1.jpg",dicasDisplay);
-		this.p1 = new Pista(200,200,100,100,"Teste!    sssssss");
-		this.p2 = new Pista(200,400,100,100,"#TheZueiraNeverEnd");
+		this.p1 = new Pista(190,250,100,100,"Papel em Branco");
+		this.p2 = new Pista(350,470,100,100,"Pegada Nº 41");
+		this.p3 = new Pista(450,400,100,100,"Coisas Jardineiro");
 		
+		this.susp1 = new Suspeito("Jair", "Jardineiro", "Regando Flores", "Images/char1.png");
+		this.susp2 = new Suspeito("Beto", "Mordomo", "Fazendo Chá", "Images/char2.png");
+		this.susp3 = new Suspeito("Will", "Segurança", "Estava Fazendo a Ronda", "Images/char3.png");
+		this.susp4 = new Suspeito("Cristina", "Faxineira", "Estava Fazendo o Lanche", "Images/char4.png");
+		this.susp5 = new Suspeito("Arnold", "Motorista", "Estava Na cidade", "Images/char5.png");
 		
-		this.susp1 = new Suspeito("Ruchel1", "faxineiro1", "Estava pescando1", "Images/char1.png");
-		this.susp2 = new Suspeito("Ruchel2", "faxineiro2", "Estava pescando2", "Images/char2.png");
-		this.susp3 = new Suspeito("Ruchel3", "faxineiro3", "Estava pescando3", "Images/char3.png");
-		this.susp4 = new Suspeito("Ruchel4", "faxineiro4", "Estava pescando4", "Images/char4.png");
-		this.susp5 = new Suspeito("Ruchel5", "faxineiro5", "Estava pescando5", "Images/char5.png");
-		
-		this.s1 = new SuspeitoAdapter(200,10,100,100,susp1 );
-		
+		this.s1 = new SuspeitoAdapter(200,10,100,100,susp1 );	
 		this.s2 = new SuspeitoAdapter(200,10,100,100,susp2 );
 		this.s3 = new SuspeitoAdapter(200,10,100,100,susp3 );
 		this.s4 = new SuspeitoAdapter(200,10,100,100,susp4 );
@@ -84,6 +83,7 @@ public class MyApplication
 		
 		c1.addPistas(p1);
 		c1.addPistas(p2);
+		c1.addPistas(p3);
 		mp.add(caso);
 		
 		//botões de acoes
@@ -102,7 +102,6 @@ public class MyApplication
 		this.fim = new EndGame(mp.getWidth(), mp.getHeight(), Color.gray);
 		this.fim.setVisible(true);
 		
-	//	this.mp.add(fim);
 		
 		
 		//Seta Atributos
@@ -129,7 +128,9 @@ public class MyApplication
 			{			
 				this.mp.invalidate();
 				this.mp.repaint();
-								
+				if(submeteAction.getCulpadoFlag()){
+					this.mp.add(fim);
+				}				
 				Thread.sleep(33);
 			}
 			catch(InterruptedException ie)
