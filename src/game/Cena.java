@@ -20,7 +20,7 @@ public class Cena extends MyComponent{
 		private String descricao;
 		private BufferedImage fotoCrime;
 		
-		private SuspeitoAdapter[] s1;
+		
 		private ContemDicas listener;
 		
 		//Construtor

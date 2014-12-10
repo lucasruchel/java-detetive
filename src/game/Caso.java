@@ -19,7 +19,7 @@ public class Caso extends MyComponent{
 	private Vector<SuspeitoAdapter> suspeitos;
 	private Cena cena;
 	private ContemDicas contemDicas;
-	private SuspeitoAdapter selectedSuspeito;
+	
 	
 	public Caso(int x,int y, int w, int h, Cena cena, ContemDicas contemDicas){
 		super(x, y, w, h);
@@ -44,9 +44,6 @@ public class Caso extends MyComponent{
 		super.mouseClicked(me);
 		if (isOver(me.getX(), me.getY()))
 			for (SuspeitoAdapter suspeitoAdapter : suspeitos) {
-				if (suspeitoAdapter.isSelected())
-					selectedSuspeito = suspeitoAdapter;
-				
 				suspeitoAdapter.mouseClicked(me);
 			}
 	}
